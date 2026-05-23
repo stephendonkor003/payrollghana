@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ghana Payroll — Built for Ghanaian Businesses</title>
+    <title>Payroll Hub — Built for Ghanaian Businesses</title>
     <meta name="description" content="Complete payroll management for Ghanaian businesses. Automatic PAYE, SSNIT, QR-verified payslips, and a full audit trail — all in one place.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,6 @@
         h1, h2, h3, h4 { font-family: 'Poppins', Arial, sans-serif; }
         a { color: inherit; text-decoration: none; }
 
-        /* Ghana flag accent bar */
         .flag-bar { height: 5px; background: linear-gradient(90deg, var(--gh-red) 33.3%, #fcd116 33.3% 66.6%, var(--gh-green) 66.6%); }
 
         /* NAV */
@@ -69,8 +68,8 @@
         }
         .btn.primary { background: var(--gold); border-color: var(--gold); color: #0d1b2a; box-shadow: 0 4px 18px rgba(242,183,5,.32); }
         .btn.primary:hover { background: var(--gold-dark); border-color: var(--gold-dark); transform: translateY(-1px); }
-        .btn.dark { background: var(--brand); border-color: var(--brand); color: white; box-shadow: 0 4px 18px rgba(11,93,81,.28); }
-        .btn.dark:hover { background: var(--brand-dark); border-color: var(--brand-dark); transform: translateY(-1px); }
+        .btn.dark { background: var(--brand); border-color: var(--brand); color: white; }
+        .btn.dark:hover { background: var(--brand-dark); transform: translateY(-1px); }
         .btn.ghost { background: rgba(255,255,255,.1); color: white; border-color: rgba(255,255,255,.28); backdrop-filter: blur(10px); }
         .btn.ghost:hover { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.45); }
         .btn.outline { background: transparent; border-color: white; color: white; }
@@ -89,6 +88,11 @@
             position: relative; z-index: 2; max-width: 1200px;
             display: grid; grid-template-columns: 1fr 390px; gap: 42px; align-items: end;
         }
+
+        /* Hero text transitions */
+        .hero-copy { transition: opacity .45s ease, transform .45s ease; }
+        .hero-copy.fading { opacity: 0; transform: translateY(14px); }
+
         .eyebrow {
             display: inline-flex; align-items: center; gap: 9px; min-height: 34px;
             padding: 0 14px; border-radius: 999px;
@@ -294,9 +298,9 @@
     <div class="flag-bar"></div>
 
     <header class="site-nav" id="site-nav">
-        <a class="brand" href="{{ route('home') }}" aria-label="Ghana Payroll home">
-            <span class="brand-mark">GP</span>
-            <span class="brand-name">Ghana Payroll</span>
+        <a class="brand" href="{{ route('home') }}" aria-label="Payroll Hub home">
+            <span class="brand-mark">PH</span>
+            <span class="brand-name">Payroll Hub</span>
         </a>
         <nav class="nav-links" aria-label="Main navigation">
             <a href="#features">Features</a>
@@ -314,13 +318,13 @@
             <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1554224154-26032fced8bd?auto=format&fit=crop&w=1800&q=82')"></div>
 
             <div class="hero-inner">
-                <div class="hero-copy">
-                    <div class="eyebrow">
+                <div class="hero-copy" id="hero-copy">
+                    <div class="eyebrow" id="hero-eyebrow">
                         <span class="eyebrow-dot"></span>
-                        Built for Ghanaian Businesses &nbsp;·&nbsp; SSNIT &amp; PAYE Compliant
+                        <span id="hero-eyebrow-text">Built for Ghanaian Businesses &nbsp;&middot;&nbsp; SSNIT &amp; PAYE Compliant</span>
                     </div>
-                    <h1>Payroll made<br><span class="accent">simple for Ghana</span></h1>
-                    <p>Run compliant monthly payroll for your team with automatic PAYE, SSNIT calculations, bank payment tracking, QR-verified PDF payslips, and a complete audit trail — in one clean system.</p>
+                    <h1 id="hero-headline">Payroll made<br><span class="accent">simple for Ghana</span></h1>
+                    <p id="hero-body">Run compliant monthly payroll for your team with automatic PAYE, SSNIT calculations, bank payment tracking, and QR-verified payslips &mdash; in one clean system.</p>
                     <div class="actions">
                         <a class="btn primary" href="{{ route('login') }}">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
@@ -459,25 +463,25 @@
                             <span class="check-circle">
                                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
                             </span>
-                            <span><strong>PAYE</strong> — Ghana Revenue Authority personal income tax bands applied automatically per employee each month</span>
+                            <span><strong>PAYE</strong> &mdash; Ghana Revenue Authority personal income tax bands applied automatically per employee each month</span>
                         </li>
                         <li>
                             <span class="check-circle">
                                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
                             </span>
-                            <span><strong>SSNIT Tier 1</strong> — 5.5% employee and 13% employer contributions tracked and reported per pay run</span>
+                            <span><strong>SSNIT Tier 1</strong> &mdash; 5.5% employee and 13% employer contributions tracked and reported per pay run</span>
                         </li>
                         <li>
                             <span class="check-circle">
                                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
                             </span>
-                            <span><strong>Provident Fund (Tier 2 &amp; 3)</strong> — pension contributions structured for employer cost separation and reporting</span>
+                            <span><strong>Provident Fund (Tier 2 &amp; 3)</strong> &mdash; pension contributions structured for employer cost separation and reporting</span>
                         </li>
                         <li>
                             <span class="check-circle">
                                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
                             </span>
-                            <span><strong>Bank payment records</strong> — track GH&#8373; disbursements to GCB, Ecobank, Absa, Fidelity, Stanbic, and all local banks</span>
+                            <span><strong>Bank payment records</strong> &mdash; track GH&#8373; disbursements to GCB, Ecobank, Absa, Fidelity, Stanbic, and all local banks</span>
                         </li>
                     </ul>
                 </div>
@@ -524,7 +528,7 @@
                         <div class="step-num">2</div>
                         <div class="step-label">Step Two</div>
                         <h3>Run Monthly Payroll</h3>
-                        <p>Create a payroll run for the month. The system calculates gross pay, PAYE, SSNIT deductions, net pay, and employer cost — automatically.</p>
+                        <p>Create a payroll run for the month. The system calculates gross pay, PAYE, SSNIT deductions, net pay, and employer cost &mdash; automatically.</p>
                         <span class="arrow">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                         </span>
@@ -533,7 +537,7 @@
                         <div class="step-num">3</div>
                         <div class="step-label">Step Three</div>
                         <h3>Issue &amp; Verify Payslips</h3>
-                        <p>Download branded PDF payslips and mark bank payments. Employees scan QR codes to confirm their payment status in real time — no calls needed.</p>
+                        <p>Download branded PDF payslips and mark bank payments. Employees scan QR codes to confirm their payment status in real time &mdash; no calls needed.</p>
                         <span class="arrow"></span>
                     </div>
                 </div>
@@ -546,7 +550,7 @@
                 <div class="cta-band">
                     <div class="cta-text">
                         <h2>Ready to manage payroll the right way?</h2>
-                        <p>Login to access employee records, run payroll, issue QR-verified payslips, manage user roles, and view the full audit trail — all built for Ghana.</p>
+                        <p>Login to access employee records, run payroll, issue QR-verified payslips, manage user roles, and view the full audit trail &mdash; all built for Ghana.</p>
                     </div>
                     <div class="cta-btns">
                         <a class="btn primary" href="{{ route('login') }}">Open Dashboard</a>
@@ -560,9 +564,9 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <div class="footer-logo">GP</div>
+                <div class="footer-logo">PH</div>
                 <div>
-                    <div class="footer-name">Ghana Payroll</div>
+                    <div class="footer-name">Payroll Hub</div>
                     <div class="footer-sub">Developed by Amodon Technologies &mdash; Accra, Ghana</div>
                 </div>
             </div>
@@ -580,19 +584,62 @@
     </footer>
 
     <script>
+        // Per-slide hero content: eyebrow text, headline HTML, body text
         const slides = [...document.querySelectorAll('.slide')];
-        const dots = [...document.querySelectorAll('.dot')];
+        const dots   = [...document.querySelectorAll('.dot')];
+        const copy   = document.getElementById('hero-copy');
+        const eyebrowText = document.getElementById('hero-eyebrow-text');
+        const headline    = document.getElementById('hero-headline');
+        const body        = document.getElementById('hero-body');
+
+        const content = [
+            {
+                eyebrow: 'Built for Ghanaian Businesses &nbsp;&middot;&nbsp; SSNIT &amp; PAYE Compliant',
+                headline: 'Payroll made<br><span class="accent">simple for Ghana</span>',
+                body: 'Run compliant monthly payroll for your team with automatic PAYE, SSNIT calculations, bank payment tracking, and QR-verified payslips &mdash; in one clean system.'
+            },
+            {
+                eyebrow: 'GRA PAYE &nbsp;&middot;&nbsp; SSNIT Tiers 1, 2 &amp; 3 &nbsp;&middot;&nbsp; Bank-Ready',
+                headline: 'Deductions done right,<br><span class="accent">every pay run.</span>',
+                body: 'Automatic PAYE tax bands and SSNIT contributions calculated accurately every month &mdash; so your team gets paid correctly and your business stays fully compliant.'
+            },
+            {
+                eyebrow: 'QR Payslips &nbsp;&middot;&nbsp; PDF Downloads &nbsp;&middot;&nbsp; Live Payment Status',
+                headline: 'Payslips your team<br><span class="accent">can always trust.</span>',
+                body: 'Generate branded PDF payslips with QR codes that show live payment status. Pending, paid, partial, or returned &mdash; clear and transparent for every employee, every month.'
+            }
+        ];
+
         let idx = 0;
+        let timer;
 
         function showSlide(n) {
             idx = n;
+
+            // Swap background slides
             slides.forEach((s, i) => s.classList.toggle('active', i === idx));
             dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+            // Fade out copy, swap text, fade back in
+            copy.classList.add('fading');
+            setTimeout(() => {
+                const c = content[idx];
+                eyebrowText.innerHTML = c.eyebrow;
+                headline.innerHTML = c.headline;
+                body.innerHTML = c.body;
+                copy.classList.remove('fading');
+            }, 450);
         }
 
-        dots.forEach((d, i) => d.addEventListener('click', () => showSlide(i)));
-        setInterval(() => showSlide((idx + 1) % slides.length), 5500);
+        function next() { showSlide((idx + 1) % slides.length); }
 
+        function startTimer() { timer = setInterval(next, 5500); }
+        function resetTimer() { clearInterval(timer); startTimer(); }
+
+        dots.forEach((d, i) => d.addEventListener('click', () => { showSlide(i); resetTimer(); }));
+        startTimer();
+
+        // Nav scroll effect
         const nav = document.getElementById('site-nav');
         window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 80), { passive: true });
     </script>

@@ -16,7 +16,7 @@ class PayslipController extends Controller
         $payslips = Payslip::with('payrollRun')
             ->where('employee_id', $request->user()->employee_id)
             ->latest()
-            ->paginate(12);
+            ->get();
 
         return view('payslips.mine', compact('payslips'));
     }

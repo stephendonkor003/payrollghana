@@ -13,7 +13,7 @@ class PayrollRunController extends Controller
 {
     public function index()
     {
-        $payrollRuns = PayrollRun::latest('period_end')->paginate(12);
+        $payrollRuns = PayrollRun::latest('period_end')->get();
 
         return view('payroll-runs.index', compact('payrollRuns'));
     }

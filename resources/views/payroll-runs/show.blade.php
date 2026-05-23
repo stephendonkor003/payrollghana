@@ -6,10 +6,13 @@
             <h1>{{ $payrollRun->title }}</h1>
             <p class="muted">{{ $payrollRun->period_start->format('F Y') }} - {{ $payrollRun->employee_count }} employees</p>
         </div>
-        <form method="post" action="{{ route('payroll-runs.destroy', $payrollRun) }}" onsubmit="return confirm('Delete this payroll run and its payslips?')">
-            @csrf @method('delete')
-            <button class="btn warn">Delete Run</button>
-        </form>
+        <div class="actions">
+            <a class="btn subtle" href="{{ route('payroll-runs.index') }}">Back</a>
+            <form method="post" action="{{ route('payroll-runs.destroy', $payrollRun) }}" onsubmit="return confirm('Delete this payroll run and its payslips?')">
+                @csrf @method('delete')
+                <button class="btn warn">Delete Run</button>
+            </form>
+        </div>
     </div>
 
     <div class="grid cols-4" style="margin-bottom:18px">
@@ -19,7 +22,23 @@
         <div class="card"><div class="muted">Employer Cost</div><div class="stat">GHS {{ number_format((float) $payrollRun->employer_total_cost, 2) }}</div></div>
     </div>
 
-    <table>
+    <div class="filter-row">
+        <div>
+            <label for="run-payslip-status-filter">Filter by payment status</label>
+            <select id="run-payslip-status-filter" data-table-filter="#run-payslips-table" data-column="4">
+                <option value="">All statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Paid">Paid</option>
+                <option value="Partially Paid">Partially Paid</option>
+                <option value="Returned to Bank">Returned to Bank</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-card">
+    <table id="run-payslips-table" class="data-table">
         <thead><tr><th>Employee</th><th>Gross</th><th>PAYE</th><th>Net</th><th>Payment Status</th><th>Paid</th><th></th></tr></thead>
         <tbody>
             @foreach ($payrollRun->payslips as $payslip)
@@ -35,6 +54,7 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 
     <div class="panel" style="margin-top:18px">
         <h2>Employer Statutory Pension Summary</h2>

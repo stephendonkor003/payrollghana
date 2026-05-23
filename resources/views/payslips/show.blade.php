@@ -8,10 +8,10 @@
         </div>
         <div class="actions">
             @can('manage payroll')
-                <a class="btn" href="{{ route('payroll-runs.show', $payslip->payrollRun) }}">Back to Run</a>
+                <a class="btn subtle" href="{{ route('payroll-runs.show', $payslip->payrollRun) }}">Back to Run</a>
                 <a class="btn primary" href="{{ route('payslips.download', $payslip) }}">Download PDF</a>
             @else
-                <a class="btn" href="{{ route('my-payslips.index') }}">My Payslips</a>
+                <a class="btn subtle" href="{{ route('my-payslips.index') }}">My Payslips</a>
                 <a class="btn primary" href="{{ route('my-payslips.download', $payslip) }}">Download PDF</a>
             @endcan
             <a class="btn" href="{{ $verificationUrl }}" target="_blank">Verification Page</a>

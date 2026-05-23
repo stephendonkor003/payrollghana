@@ -6,10 +6,21 @@
             <h1>Users</h1>
             <p class="muted">Create login accounts and assign Spatie roles.</p>
         </div>
-        <a class="btn primary" href="{{ route('users.create') }}">Create User</a>
+        <div class="actions">
+            <a class="btn subtle" href="{{ route('dashboard') }}">Back</a>
+            <a class="btn primary" href="{{ route('users.create') }}">Create User</a>
+        </div>
     </div>
 
-    <table>
+    <div class="filter-row">
+        <div>
+            <label for="user-role-filter">Filter by role</label>
+            <input id="user-role-filter" data-table-filter="#users-table" data-column="2" placeholder="Type role">
+        </div>
+    </div>
+
+    <div class="table-card">
+    <table id="users-table" class="data-table">
         <thead><tr><th>User</th><th>Linked Employee</th><th>Roles</th><th>Created</th><th></th></tr></thead>
         <tbody>
             @forelse ($users as $user)
@@ -33,5 +44,5 @@
             @endforelse
         </tbody>
     </table>
-    <div style="margin-top:16px">{{ $users->links() }}</div>
+    </div>
 @endsection

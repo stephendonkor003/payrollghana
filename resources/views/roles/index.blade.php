@@ -6,10 +6,14 @@
             <h1>Roles</h1>
             <p class="muted">Spatie permission roles control what each login account can do.</p>
         </div>
-        <a class="btn primary" href="{{ route('roles.create') }}">Create Role</a>
+        <div class="actions">
+            <a class="btn subtle" href="{{ route('dashboard') }}">Back</a>
+            <a class="btn primary" href="{{ route('roles.create') }}">Create Role</a>
+        </div>
     </div>
 
-    <table>
+    <div class="table-card">
+    <table id="roles-table" class="data-table">
         <thead><tr><th>Role</th><th>Users</th><th>Permissions</th><th></th></tr></thead>
         <tbody>
             @foreach ($roles as $role)
@@ -30,4 +34,5 @@
             @endforeach
         </tbody>
     </table>
+    </div>
 @endsection

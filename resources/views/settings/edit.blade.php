@@ -6,6 +6,7 @@
             <h1>Company Setup</h1>
             <p class="muted">This information appears on every generated e-payslip and PDF.</p>
         </div>
+        <a class="btn subtle" href="{{ route('dashboard') }}">Back</a>
     </div>
 
     <form class="panel" method="post" action="{{ route('settings.update') }}" enctype="multipart/form-data">
@@ -53,6 +54,7 @@
         </div>
         <div class="actions" style="margin-top:18px">
             <button class="btn primary">Save Settings</button>
+            <a class="btn subtle" href="{{ route('dashboard') }}">Cancel</a>
         </div>
     </form>
 @endsection

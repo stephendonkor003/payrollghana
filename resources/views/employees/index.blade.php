@@ -6,10 +6,29 @@
             <h1>Employees</h1>
             <p class="muted">Salary details here are used when you process payroll.</p>
         </div>
-        <a class="btn primary" href="{{ route('employees.create') }}">Add Employee</a>
+        <div class="actions">
+            <a class="btn subtle" href="{{ route('dashboard') }}">Back</a>
+            <a class="btn primary" href="{{ route('employees.create') }}">Add Employee</a>
+        </div>
     </div>
 
-    <table>
+    <div class="filter-row">
+        <div>
+            <label for="employee-status-filter">Filter by status</label>
+            <select id="employee-status-filter" data-table-filter="#employees-table" data-column="4">
+                <option value="">All statuses</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+        <div>
+            <label for="employee-department-filter">Filter by department</label>
+            <input id="employee-department-filter" data-table-filter="#employees-table" data-column="2" placeholder="Type department or role">
+        </div>
+    </div>
+
+    <div class="table-card">
+    <table id="employees-table" class="data-table">
         <thead><tr><th>No.</th><th>Name</th><th>Role</th><th>Basic Salary</th><th>Status</th><th></th></tr></thead>
         <tbody>
             @forelse ($employees as $employee)
@@ -26,5 +45,5 @@
             @endforelse
         </tbody>
     </table>
-    <div style="margin-top:16px">{{ $employees->links() }}</div>
+    </div>
 @endsection

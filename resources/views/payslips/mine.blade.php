@@ -6,9 +6,26 @@
             <h1>My Payslips</h1>
             <p class="muted">Your monthly e-payslips, payment status, and PDF downloads.</p>
         </div>
+        <a class="btn subtle" href="{{ route('dashboard') }}">Back</a>
     </div>
 
-    <table>
+    <div class="filter-row">
+        <div>
+            <label for="payslip-status-filter">Filter by status</label>
+            <select id="payslip-status-filter" data-table-filter="#my-payslips-table" data-column="4">
+                <option value="">All statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Paid">Paid</option>
+                <option value="Partially Paid">Partially Paid</option>
+                <option value="Returned to Bank">Returned to Bank</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-card">
+    <table id="my-payslips-table" class="data-table">
         <thead><tr><th>Period</th><th>Gross</th><th>Deductions</th><th>Net</th><th>Status</th><th></th></tr></thead>
         <tbody>
             @forelse ($payslips as $payslip)
@@ -30,5 +47,5 @@
             @endforelse
         </tbody>
     </table>
-    <div style="margin-top:16px">{{ $payslips->links() }}</div>
+    </div>
 @endsection

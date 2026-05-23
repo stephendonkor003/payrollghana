@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Payslip Verification &mdash; Ghana Payroll</title>
+    <title>Payslip Verification &mdash; Payroll Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -133,8 +133,8 @@
 
     <div class="topbar">
         <div class="topbar-brand">
-            <div class="topbar-logo">GP</div>
-            <span class="topbar-name">Ghana Payroll</span>
+            <div class="topbar-logo">PH</div>
+            <span class="topbar-name">Payroll Hub</span>
         </div>
         <div class="topbar-right">
             @auth
@@ -192,7 +192,7 @@
     </main>
 
     <footer class="footer-bar">
-        Ghana Payroll &mdash; Developed by Amodon Technologies &nbsp;&middot;&nbsp;
+        Payroll Hub &mdash; Developed by Amodon Technologies &nbsp;&middot;&nbsp;
         <a href="https://www.amodon.net" target="_blank" rel="noopener">www.amodon.net</a>
     </footer>
 </body>

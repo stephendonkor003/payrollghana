@@ -7,7 +7,8 @@
             <p class="muted">{{ $employee->employee_number }} · {{ $employee->job_title }} · {{ $employee->department }}</p>
         </div>
         <div class="actions">
-            <a class="btn" href="{{ route('employees.edit', $employee) }}">Edit</a>
+            <a class="btn subtle" href="{{ route('employees.index') }}">Back</a>
+            <a class="btn primary" href="{{ route('employees.edit', $employee) }}">Edit</a>
             <form method="post" action="{{ route('employees.destroy', $employee) }}" onsubmit="return confirm('Delete this employee?')">
                 @csrf @method('delete')
                 <button class="btn warn">Delete</button>
@@ -35,7 +36,8 @@
 
     <div class="panel" style="margin-top:18px">
         <h2>Payslips</h2>
-        <table>
+        <div class="table-card" style="margin-top:12px">
+        <table class="data-table">
             <thead><tr><th>Period</th><th>Gross</th><th>Deductions</th><th>Net</th><th></th></tr></thead>
             <tbody>
                 @forelse ($employee->payslips->sortByDesc('created_at') as $payslip)
@@ -51,5 +53,6 @@
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 @endsection

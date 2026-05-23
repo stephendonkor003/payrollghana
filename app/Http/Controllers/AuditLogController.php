@@ -8,7 +8,7 @@ class AuditLogController extends Controller
 {
     public function index()
     {
-        $activities = Activity::with('causer', 'subject')->latest()->paginate(20);
+        $activities = Activity::with('causer', 'subject')->latest()->limit(500)->get();
 
         return view('audit-logs.index', compact('activities'));
     }

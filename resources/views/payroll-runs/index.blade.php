@@ -6,10 +6,21 @@
             <h1>Payroll Runs</h1>
             <p class="muted">Process a month once, then review and download employee payslips.</p>
         </div>
-        <a class="btn primary" href="{{ route('payroll-runs.create') }}">Run Payroll</a>
+        <div class="actions">
+            <a class="btn subtle" href="{{ route('dashboard') }}">Back</a>
+            <a class="btn primary" href="{{ route('payroll-runs.create') }}">Run Payroll</a>
+        </div>
     </div>
 
-    <table>
+    <div class="filter-row">
+        <div>
+            <label for="run-period-filter">Filter by period</label>
+            <input id="run-period-filter" data-table-filter="#payroll-runs-table" data-column="0" placeholder="Example: May 2026">
+        </div>
+    </div>
+
+    <div class="table-card">
+    <table id="payroll-runs-table" class="data-table">
         <thead><tr><th>Period</th><th>Employees</th><th>Gross</th><th>Deductions</th><th>Net</th><th>Employer Cost</th><th></th></tr></thead>
         <tbody>
             @forelse ($payrollRuns as $run)
@@ -27,5 +38,5 @@
             @endforelse
         </tbody>
     </table>
-    <div style="margin-top:16px">{{ $payrollRuns->links() }}</div>
+    </div>
 @endsection
