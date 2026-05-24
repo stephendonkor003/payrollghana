@@ -136,6 +136,7 @@
             </div>
             <nav class="nav">
                 <a data-icon="D" href="{{ route('dashboard') }}" @class(['active' => request()->routeIs('dashboard')])>Dashboard</a>
+                <a data-icon="O" href="{{ route('profile.edit') }}" @class(['active' => request()->routeIs('profile.*')])>My Profile</a>
                 @can('manage employees')
                     <a data-icon="E" href="{{ route('employees.index') }}" @class(['active' => request()->routeIs('employees.*')])>Employees</a>
                 @endcan
