@@ -7,6 +7,7 @@ use App\Models\Payslip;
 use App\Services\PayslipQrCode;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
 class PayslipController extends Controller
@@ -48,11 +49,23 @@ class PayslipController extends Controller
         $viewData = $this->viewData($payslip);
         $viewData['qrCode'] = $qrCode->dataUri($viewData['verificationUrl']);
 
-        $pdf = Pdf::loadView('payslips.pdf', $viewData)->setPaper('a4');
+        try {
+            $pdf = Pdf::loadView('payslips.pdf', $viewData)->setPaper('a4');
+            $fileName = $this->downloadFileName($payslip);
 
-        $fileName = 'payslip-'.$payslip->employee_number.'-'.$payslip->payrollRun->period_end->format('Y-m').'.pdf';
+            return response($pdf->output(), 200, [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="'.$fileName.'"',
+            ]);
+        } catch (\Throwable $exception) {
+            Log::error('Payslip PDF download failed', [
+                'payslip_id' => $payslip->id,
+                'employee_number' => $payslip->employee_number,
+                'error' => $exception->getMessage(),
+            ]);
 
-        return $pdf->download($fileName);
+            return back()->withErrors(['download' => 'The payslip PDF could not be generated. Please try again.']);
+        }
     }
 
     public function verify(string $token, PayslipQrCode $qrCode)
@@ -123,5 +136,13 @@ class PayslipController extends Controller
             'qrCode' => app(PayslipQrCode::class)->dataUri($verificationUrl),
             'paymentStatuses' => Payslip::paymentStatuses(),
         ];
+    }
+
+    private function downloadFileName(Payslip $payslip): string
+    {
+        $employeeNumber = preg_replace('/[^A-Za-z0-9_-]+/', '-', $payslip->employee_number);
+        $period = $payslip->payrollRun->period_end->format('Y-m');
+
+        return trim("payslip-{$employeeNumber}-{$period}", '-').'.pdf';
     }
 }
