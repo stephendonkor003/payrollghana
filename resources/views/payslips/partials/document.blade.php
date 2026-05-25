@@ -188,11 +188,9 @@
                         <div class="payment-card">
                             <span class="label">Payment Tracking</span>
                             <span class="value">Paid: GHS {{ number_format((float) $payslip->paid_amount, 2) }} | Balance: GHS {{ number_format((float) $payslip->payment_balance, 2) }}</span>
-                            @if ($payslip->payment_status_updated_at)
-                                <p>Updated {{ $payslip->payment_status_updated_at->format('M d, Y H:i') }} by {{ $payslip->paymentStatusUpdater?->name ?: 'System' }}</p>
-                            @else
+                            @unless ($payslip->payment_status_updated_at)
                                 <p>Payment status has not been updated yet.</p>
-                            @endif
+                            @endunless
                         </div>
                     </td>
                 </tr>

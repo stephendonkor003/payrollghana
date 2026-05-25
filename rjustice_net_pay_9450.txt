@@ -1,0 +1,31 @@
+Target net pay for Justice Okyere / rjustice: GHS 9,450.00
+
+Enter these figures on the employee salary form:
+
+Basic Salary: 12766.84
+Allowances: 0.00
+Other Deductions: 0.00
+
+Expected payroll result:
+
+Gross Pay: GHS 12,766.84
+Employee SSNIT 5.5%: GHS 702.18
+Taxable Income: GHS 12,064.66
+PAYE: GHS 2,614.66
+Total Deductions: GHS 3,316.84
+Net Pay: GHS 9,450.00
+
+Where to enter it:
+
+1. Open Employees.
+2. Edit Justice Okyere / rjustice.
+3. Put 12766.84 in Basic Salary.
+4. Put 0.00 in Allowances.
+5. Put 0.00 in Other Deductions.
+6. Save the employee.
+7. Run payroll again.
+
+Note:
+12766.83 gives GHS 9,449.99 net pay.
+12766.84 gives GHS 9,450.00 net pay.
+12766.85 also rounds to GHS 9,450.00 net pay.
